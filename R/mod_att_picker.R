@@ -22,9 +22,14 @@ mod_att_picker_ui <- function(id, element){
 #' att_picker Server Function
 #'
 #' @noRd 
-mod_att_picker_server <- function(input, output, session){
+mod_att_picker_server <- function(input, output, session, element){
   ns <- session$ns
- 
+  
+  col <- reactive({ return(input$col) })
+  
+  return(list(element = element,
+              background_color = "background-color",
+              col = col))
 }
     
 ## To be copied in the UI

@@ -5,6 +5,9 @@
 #' @import shiny
 #' @noRd
 app_server <- function( input, output, session ) {
-  # List the first level callModules here
-
+  navbar <- callModule(module = mod_att_picker_server, 
+                       id = "navbar",
+                       element = ".navbar-default")
+  
+  callModule(mod_css_injector_server, "css_injector", navbar = navbar)
 }
