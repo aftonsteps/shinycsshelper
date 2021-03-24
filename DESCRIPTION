@@ -1,0 +1,15 @@
+Package: shinycssavoider
+Title: Shiny CSS Avoider
+Version: 0.0.0.9000
+Authors@R: person('Afton', 'Coombs', email = 'aftoncoombs@gmail.com', role = c('cre', 'aut'))
+Description: This app hopefully helps you avoid using CSS if you don't want to use CSS.
+License: MIT + file LICENSE
+Imports: 
+    config,
+    golem,
+    shiny
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+URL: https://github.com/aftonsteps/shinycssavoider
+BugReports: https://github.com/aftonsteps/shinycssavoider/issues
