@@ -9,8 +9,18 @@ app_ui <- function(request) {
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # List the first level UI elements here 
-    fluidPage(
-      h1("shinycssavoider")
+    navbarPage("CSS Avoider",
+               tabPanel("Component 1",
+                        sidebarLayout(
+                          sidebarPanel = sidebarPanel("Sidebar"),
+                          mainPanel = mainPanel("Choose Stuff Here")
+                        )
+               ),
+               tabPanel("Component 2"),
+               tabPanel("Component 3"),
+               navbarMenu("More",
+                          tabPanel("Sub-Component A"),
+                          tabPanel("Sub-Component B"))
     )
   )
 }
