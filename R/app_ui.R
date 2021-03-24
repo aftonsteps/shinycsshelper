@@ -9,7 +9,7 @@ app_ui <- function(request) {
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # List the first level UI elements here 
-    navbarPage("CSS Avoider",
+    navbarPage("CSS Helper",
                # shinyjs::inlineCSS(".navbar-default {
                #   background-color: #0051FF80;
                # }"),

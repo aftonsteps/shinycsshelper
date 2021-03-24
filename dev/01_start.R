@@ -14,13 +14,13 @@
 ## Fill the DESCRIPTION ----
 ## Add meta data about your application
 golem::fill_desc(
-  pkg_name = "shinycssavoider", # The Name of the package containing the App 
-  pkg_title = "Shiny CSS Avoider", # The Title of the package containing the App 
-  pkg_description = "This app hopefully helps you avoid using CSS if you don't want to use CSS.", # The Description of the package containing the App 
+  pkg_name = "shinycsshelper", # The Name of the package containing the App 
+  pkg_title = "Shiny CSS Helper", # The Title of the package containing the App 
+  pkg_description = " This app helps you experiment with colors, fonts, and display options for your app, and then writes the corresponding CSS file for you to use in your application.", # The Description of the package containing the App 
   author_first_name = "Afton", # Your First Name
   author_last_name = "Coombs", # Your Last Name
   author_email = "aftoncoombs@gmail.com", # Your Email
-  repo_url = "https://github.com/aftonsteps/shinycssavoider" # The URL of the GitHub Repo (optional) 
+  repo_url = "https://github.com/aftonsteps/shinycsshelper" # The URL of the GitHub Repo (optional) 
 )     
 
 ## Set {golem} options ----
