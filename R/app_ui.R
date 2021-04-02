@@ -10,16 +10,14 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     # List the first level UI elements here 
     navbarPage("CSS Helper",
-               # shinyjs::inlineCSS(".navbar-default {
-               #   background-color: #0051FF80;
-               # }"),
                tabPanel("Component 1",
                         mod_css_injector_ui("css_injector"),
                         sidebarLayout(
                           sidebarPanel = sidebarPanel("Sidebar"),
                           mainPanel = mainPanel(HTML("Select options here<br>"),
                                                 mod_att_picker_ui(id = "navbar",
-                                                                  element = "Navbar")
+                                                                  element = "Navbar"),
+                                                mod_mod_slider_changer_ui("slider_changer")
                           )
                         )
                ),

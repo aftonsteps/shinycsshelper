@@ -15,7 +15,21 @@ mod_att_picker_ui <- function(id, element){
                               label = NULL, 
                               value = "#00FF0080",
                               allowTransparent = TRUE,
-                              closeOnClick = TRUE)
+                              closeOnClick = TRUE),
+    selectInput(inputId = ns("font_style"), 
+                label = "Font Style",
+                choices = c("regular", "italic", "oblique"),
+                selected = "regular"),
+    shinyWidgets::numericInputIcon(inputId = ns("margin"),
+                                   label = "Margin",
+                                   value = 0,
+                                   min = 0,
+                                   icon = list(NULL, "px")),
+    shinyWidgets::numericInputIcon(inputId = ns("padding"),
+                                   label = "Padding",
+                                   value = 0,
+                                   min = 0,
+                                   icon = list(NULL, "px"))
   )
 }
     
@@ -25,11 +39,19 @@ mod_att_picker_ui <- function(id, element){
 mod_att_picker_server <- function(input, output, session, element){
   ns <- session$ns
   
-  col <- reactive({ return(input$col) })
+  vals <- reactive({ return(c(input$col, 
+                              input$font_style,
+                              add_px(input$margin),
+                              add_px(input$padding))) })
   
   return(list(element = element,
-              background_color = "background-color",
-              col = col))
+              atts = c("background-color", 
+                       "font-style", 
+                       "margin", 
+                       "padding"
+                       ),
+              vals = vals
+              ))
 }
     
 ## To be copied in the UI

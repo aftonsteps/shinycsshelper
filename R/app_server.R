@@ -9,5 +9,13 @@ app_server <- function( input, output, session ) {
                        id = "navbar",
                        element = ".navbar-default")
   
-  callModule(mod_css_injector_server, "css_injector", navbar = navbar)
+  slider <- callModule(mod_mod_slider_changer_server, 
+                       "slider_changer")
+  
+  
+  callModule(mod_css_injector_server, 
+             "css_injector", 
+             navbar = navbar,
+             slider = slider)
+  
 }

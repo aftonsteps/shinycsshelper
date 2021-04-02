@@ -1,3 +1,10 @@
 .navbar-default {
-  background-color: #3B059980;
+  background-color: #82C8F0E4;
+  font-style: oblique;
+  margin: 9px;
+  padding: 9px;
+}
+
+.irs-grid-text {
+  font-size: 13pt;
 }
