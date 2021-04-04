@@ -7,51 +7,36 @@
 #' @noRd 
 #'
 #' @importFrom shiny NS tagList 
-mod_att_picker_ui <- function(id, element){
+mod_att_picker_ui <- function(id, att){
   ns <- NS(id)
   tagList(
-    HTML(element),
-    colourpicker::colourInput(inputId = ns("col"), 
-                              label = NULL, 
-                              value = "#00FF0080",
-                              allowTransparent = TRUE,
-                              closeOnClick = TRUE),
-    selectInput(inputId = ns("font_style"), 
-                label = "Font Style",
-                choices = c("regular", "italic", "oblique"),
-                selected = "regular"),
-    shinyWidgets::numericInputIcon(inputId = ns("margin"),
-                                   label = "Margin",
-                                   value = 0,
-                                   min = 0,
-                                   icon = list(NULL, "px")),
-    shinyWidgets::numericInputIcon(inputId = ns("padding"),
-                                   label = "Padding",
-                                   value = 0,
-                                   min = 0,
-                                   icon = list(NULL, "px"))
+    create_ui_mods_from_list(att = att, ns = ns)
   )
 }
     
 #' att_picker Server Function
 #'
 #' @noRd 
-mod_att_picker_server <- function(input, output, session, element){
+mod_att_picker_server <- function(input, output, session, att, elem){
   ns <- session$ns
   
-  vals <- reactive({ return(c(input$col, 
-                              input$font_style,
-                              add_px(input$margin),
-                              add_px(input$padding))) })
+  att_mods <- create_server_mods_from_list(att)
+
+  vals <- reactive({ 
+    col_val <- unlist(lapply(att_mods, unwrap_vals))
+
+    return(col_val) 
+    })
   
-  return(list(element = element,
-              atts = c("background-color", 
-                       "font-style", 
-                       "margin", 
-                       "padding"
-                       ),
-              vals = vals
-              ))
+  atts <- reactive({
+    unwrapped_atts <- unlist(lapply(att_mods, unwrap_atts))
+    
+    return(unwrapped_atts)
+  })
+  
+  return(list(elem = elem,
+              atts = atts,
+              vals = vals))
 }
     
 ## To be copied in the UI

@@ -10,19 +10,32 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     # List the first level UI elements here 
     navbarPage("CSS Helper",
-               tabPanel("Component 1",
+               tabPanel("Base Shiny",
                         mod_css_injector_ui("css_injector"),
                         sidebarLayout(
-                          sidebarPanel = sidebarPanel("Sidebar"),
-                          mainPanel = mainPanel(HTML("Select options here<br>"),
-                                                mod_att_picker_ui(id = "navbar",
-                                                                  element = "Navbar"),
-                                                mod_mod_slider_changer_ui("slider_changer")
+                          sidebarPanel = 
+                            sidebarPanel(shinyWidgets::switchInput(
+                                           inputId = "show_navbar",
+                                           label = "Navbar",
+                                           onLabel = "Show",
+                                           offLabel = "Hide"
+                                         ),
+                                         conditionalPanel(
+                                           condition = "input.show_navbar",
+                                           mod_att_picker_ui(id = "navbar",
+                                                             att= list("background_color",
+                                                                       "border_color",
+                                                                       "border_width",
+                                                                       "font_style"))
+                                         )
+                            ),
+                          mainPanel = 
+                            mainPanel(mod_slider_changer_ui("slider_changer")
                           )
                         )
                ),
-               tabPanel("Component 2"),
-               tabPanel("Component 3"),
+               tabPanel("Shiny Widgets"),
+               tabPanel("Save Your CSS File"),
                navbarMenu("More",
                           tabPanel("Sub-Component A"),
                           tabPanel("Sub-Component B"))

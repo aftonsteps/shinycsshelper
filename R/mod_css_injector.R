@@ -17,15 +17,17 @@ mod_css_injector_ui <- function(id){
 #' css_injector Server Function
 #'
 #' @noRd 
-mod_css_injector_server <- function(input, output, session, navbar, slider){
+mod_css_injector_server <- function(input, output, session, navbar){
   ns <- session$ns
   
   css_agg <- reactive({
+    ## TODO make the 'navbar' arg instead a list of arbitrary length
+    ## to be expanded
     css_to_write <- tableHTML::make_css(lapply(navbar, unreactify),
-                                        lapply(slider, unreactify),
                                         file = "data/style.css")
-    css_to_render <- tableHTML::make_css(lapply(navbar, unreactify),
-                                         lapply(slider, unreactify))
+    css_to_render <- tableHTML::make_css(lapply(navbar, unreactify)
+                                        )
+    
     return(css_to_render)
   })
   

@@ -7,7 +7,7 @@
 #' @noRd 
 #'
 #' @importFrom shiny NS tagList 
-mod_mod_slider_changer_ui <- function(id){
+mod_slider_changer_ui <- function(id){
   ns <- NS(id)
   tagList(
     sliderInput(inputId = ns("slider-test"),
@@ -28,7 +28,7 @@ mod_mod_slider_changer_ui <- function(id){
 #' mod_slider_changer Server Function
 #'
 #' @noRd 
-mod_mod_slider_changer_server <- function(input, output, session){
+mod_slider_changer_server <- function(input, output, session){
   ns <- session$ns
   
   vals <- reactive({ return(c(paste0(input$irs_grid_text, "pt"))) })
