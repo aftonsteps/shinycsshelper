@@ -22,3 +22,23 @@ unreactify <- function(elem) {
     return(elem())
   } else return (elem)
 }
+
+#' Nested Unreactify
+#' 
+#' This function is useful for when you have a list of lists, and you want
+#' to unreactify the elements of the second-level lists.
+#'
+#' @param x a list of lists, where the lower-level list contains some reactive
+#' elements.
+#'
+#' @return a list of lists where the lower-level list of reactives has been
+#' evaluated
+#' @export
+nested_unreactify <- function(x) {
+  x_list <- list()
+  for (idx in 1:length(x)) {
+    x_list <- c(x_list, list(lapply(x[[idx]], unreactify)))
+  }
+  
+  return(x_list)
+}

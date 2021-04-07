@@ -15,6 +15,6 @@ app_server <- function( input, output, session ) {
   
   callModule(mod_css_injector_server, 
              "css_injector", 
-             navbar = navbar)
+             css = list(navbar, navbar))
   
 }
