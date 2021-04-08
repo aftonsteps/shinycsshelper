@@ -1,13 +1,10 @@
 .navbar-default {
-  background-color: #00FF0080;
-  border-color: #00FF0080;
+  background-color: #BA47A380;
+  border-color: #44C74480;
   border-width: 0px 0px 0px 0px;
   font-style: regular;
 }
 
-.navbar-default {
-  background-color: #00FF0080;
-  border-color: #00FF0080;
-  border-width: 0px 0px 0px 0px;
-  font-style: regular;
+.irs-grid-text {
+  font-size: 8pt;
 }

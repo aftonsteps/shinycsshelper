@@ -27,10 +27,26 @@ app_ui <- function(request) {
                                                                        "border_color",
                                                                        "border_width",
                                                                        "font_style"))
+                                         ),
+                                         shinyWidgets::switchInput(
+                                           inputId = "show_slider_input",
+                                           label = "Slider Input",
+                                           onLabel = "Show",
+                                           offLabel = "Hide"
+                                         ),
+                                         conditionalPanel(
+                                           condition = "input.show_slider_input",
+                                           mod_att_picker_ui(id = "slider_input",
+                                                             att= list("font_size"))
                                          )
                             ),
                           mainPanel = 
-                            mainPanel(mod_slider_changer_ui("slider_changer")
+                            mainPanel(sliderInput(inputId = "slider-test",
+                                                  label = "Slider",
+                                                  min = 0,
+                                                  max = 10,
+                                                  value = 5,
+                                                  step = 1)
                           )
                         )
                ),
