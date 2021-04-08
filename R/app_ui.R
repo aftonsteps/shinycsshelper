@@ -35,7 +35,8 @@ app_ui <- function(request) {
                         )
                ),
                tabPanel("Shiny Widgets"),
-               tabPanel("Save Your CSS File"),
+               tabPanel("Save Your CSS File",
+                        mod_download_css_ui("style_css")),
                navbarMenu("More",
                           tabPanel("Sub-Component A"),
                           tabPanel("Sub-Component B"))

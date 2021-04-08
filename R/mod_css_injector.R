@@ -24,7 +24,7 @@ mod_css_injector_server <- function(input, output, session, css){
     css_list <- nested_unreactify(css)
     css_to_write <-
       do.call(what = tableHTML::make_css,
-              args = c(... = css_list, file = "data/style.css"))
+              args = c(... = css_list, file = "inst/app/www/style.css"))
     css_to_render <- do.call(what = tableHTML::make_css, args = css_list)
   
     return(css_to_render)
