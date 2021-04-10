@@ -32,6 +32,13 @@ mod_css_injector_server <- function(input, output, session, css){
   
   output$css_header <- renderUI({
     req(css_agg())
+    
+    css_to_inject <-
+      paste0("<style>@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Train+One&display=swap');</style>",
+             "body {font-family: 'Cookie', cursive;} ",
+             css_agg())
+
+    
     return(shinyjs::inlineCSS(css_agg()))
   })
 }

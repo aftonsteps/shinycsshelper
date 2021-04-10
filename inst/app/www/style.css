@@ -1,10 +1,33 @@
 .navbar-default {
-  background-color: #BA47A380;
-  border-color: #44C74480;
-  border-width: 0px 0px 0px 0px;
+  background-color: #FF00F280;
+  border-color: #7E0AFAB8;
+  border-width: 2px 2px 1px 2px;
+  font-family: Faster One;
   font-style: regular;
 }
 
-.irs-grid-text {
-  font-size: 8pt;
+.irs--shiny .irs-grid-text {
+  font-family: Cookie;
+  font-size: 12pt;
+  color: #121212;
+}
+
+.irs--shiny .irs-bar {
+  background-color: #00D5FF80;
+  border-color: #0A86FAB8;
+  border-width: 0px 0px 0px 0px;
+}
+
+.irs--shiny .irs-min, .irs--shiny {
+  color: #121212;
+  font-family: Cookie;
+  font-size: 12pt;
+  background-color: #00D5FF80;
+}
+
+.irs--shiny .irs-max, .irs--shiny {
+  color: #121212;
+  font-family: Cookie;
+  font-size: 12pt;
+  background-color: #00D5FF80;
 }

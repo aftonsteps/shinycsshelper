@@ -7,27 +7,27 @@
 #' @noRd 
 #'
 #' @importFrom shiny NS tagList 
-mod_background_color_ui <- function(id){
+mod_color_ui <- function(id){
   ns <- NS(id)
   tagList(
     colourpicker::colourInput(inputId = ns("col"),
-                              label = "Background Color", 
-                              value = "#00FF0080",
-                              allowTransparent = TRUE,
-                              closeOnClick = TRUE),
+                              label = "Color", 
+                              value = "#121212",
+                              allowTransparent = FALSE,
+                              closeOnClick = TRUE)
   )
 }
     
 #' color Server Function
 #'
 #' @noRd 
-mod_background_color_server <- function(input, output, session){
+mod_color_server <- function(input, output, session){
   ns <- session$ns
   
   vals <- reactive({ return(c(input$col)) })
   
   return(list(vals = vals,
-              atts = c("background-color")))
+              atts = c("color")))
 }
     
 ## To be copied in the UI

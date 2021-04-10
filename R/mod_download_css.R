@@ -10,7 +10,7 @@
 mod_download_css_ui <- function(id){
   ns <- NS(id)
   tagList(
-    a(href="www/style.css", "Download CSV", download=NA, target="_blank")
+    a(href="www/style.css", "Download CSS", download=NA, target="_blank")
   )
 }
     

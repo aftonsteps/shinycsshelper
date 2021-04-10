@@ -10,7 +10,16 @@
 mod_font_family_ui <- function(id){
   ns <- NS(id)
   tagList(
- 
+    selectInput(inputId = ns("font"),
+                label = "Font Family",
+                choices = c("Cookie",
+                            "Noto Sans TC",
+                            "Open Sans",
+                            "Quicksand",
+                            "Fredericka the Great",
+                            "Codystar",
+                            "Faster One"),
+                selected = "Cookie")
   )
 }
     
@@ -20,6 +29,10 @@ mod_font_family_ui <- function(id){
 mod_font_family_server <- function(input, output, session){
   ns <- session$ns
  
+  vals <- reactive({ return(c(input$font)) })
+  
+  return(list(vals = vals,
+              atts = c("font-family")))
 }
     
 ## To be copied in the UI

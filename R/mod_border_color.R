@@ -12,7 +12,7 @@ mod_border_color_ui <- function(id){
   tagList(
     colourpicker::colourInput(inputId = ns("col"),
                               label = "Border Color", 
-                              value = "#00FF0080",
+                              value = "#0A86FAB8",
                               allowTransparent = TRUE,
                               closeOnClick = TRUE),
   )

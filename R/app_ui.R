@@ -11,6 +11,8 @@ app_ui <- function(request) {
     # List the first level UI elements here 
     navbarPage("CSS Helper",
                tabPanel("Base Shiny",
+                        shinyjs::inlineCSS("@import url('https://fonts.googleapis.com/css2?family=Codystar&family=Cookie&family=Faster+One&family=Fredericka+the+Great&family=Noto+Sans+TC:wght@100&family=Open+Sans:wght@300&family=Quicksand:wght@300&display=swap');"),
+                        shinyjs::inlineCSS(list("body" = "font-family: 'Cookie', cursive;")),
                         mod_css_injector_ui("css_injector"),
                         sidebarLayout(
                           sidebarPanel = 
@@ -26,6 +28,7 @@ app_ui <- function(request) {
                                                              att= list("background_color",
                                                                        "border_color",
                                                                        "border_width",
+                                                                       "font_family",
                                                                        "font_style"))
                                          ),
                                          shinyWidgets::switchInput(
@@ -37,7 +40,23 @@ app_ui <- function(request) {
                                          conditionalPanel(
                                            condition = "input.show_slider_input",
                                            mod_att_picker_ui(id = "slider_input",
-                                                             att= list("font_size"))
+                                                             att= list("font_family",
+                                                                       "font_size",
+                                                                       "color")),
+                                           mod_att_picker_ui(id = "slider_bar",
+                                                             att = list("background_color",
+                                                                        "border_color",
+                                                                        "border_width")),
+                                           mod_att_picker_ui(id = "slider_min",
+                                                             att = list("color",
+                                                                        "font_family",
+                                                                        "font_size",
+                                                                        "background_color")),
+                                           mod_att_picker_ui(id = "slider_max",
+                                                             att = list("color",
+                                                                        "font_family",
+                                                                        "font_size",
+                                                                        "background_color"))
                                          )
                             ),
                           mainPanel = 

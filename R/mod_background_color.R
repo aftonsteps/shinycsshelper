@@ -7,12 +7,12 @@
 #' @noRd 
 #'
 #' @importFrom shiny NS tagList 
-mod_background_color_ui <- function(id){
+mod_background_color_ui <- function(id, value = "#00D5FF80"){
   ns <- NS(id)
   tagList(
     colourpicker::colourInput(inputId = ns("col"),
                               label = "Background Color", 
-                              value = "#00FF0080",
+                              value = value,
                               allowTransparent = TRUE,
                               closeOnClick = TRUE),
   )
