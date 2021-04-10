@@ -21,14 +21,14 @@ mod_css_injector_server <- function(input, output, session, css){
   ns <- session$ns
   
    css_agg <- reactive({
-    css_list <- nested_unreactify(css)
-    css_to_write <-
-      do.call(what = tableHTML::make_css,
-              args = c(... = css_list, file = "inst/app/www/style.css"))
-    css_to_render <- do.call(what = tableHTML::make_css, args = css_list)
-  
-    return(css_to_render)
-  })
+     css_list <- nested_unreactify(css)
+     css_to_write <-
+       do.call(what = tableHTML::make_css,
+               args = c(... = css_list, file = "inst/app/www/style.css"))
+     css_to_render <- do.call(what = tableHTML::make_css, args = css_list)
+     
+     return(css_to_render)
+   })
   
   output$css_header <- renderUI({
     req(css_agg())

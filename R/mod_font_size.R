@@ -11,7 +11,7 @@ mod_font_size_ui <- function(id){
   ns <- NS(id)
   tagList(
     shinyWidgets::numericInputIcon(inputId = ns("font_size"),
-                                   label = "Slider Text Size",
+                                   label = "Font Size",
                                    value = 12,
                                    min = 0,
                                    icon = list(NULL, "pt"))

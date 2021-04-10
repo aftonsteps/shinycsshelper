@@ -16,51 +16,92 @@ app_ui <- function(request) {
                         mod_css_injector_ui("css_injector"),
                         sidebarLayout(
                           sidebarPanel = 
-                            sidebarPanel(shinyWidgets::switchInput(
-                                           inputId = "show_navbar",
-                                           label = "Navbar",
-                                           onLabel = "Show",
-                                           offLabel = "Hide"
-                                         ),
-                                         conditionalPanel(
-                                           condition = "input.show_navbar",
-                                           mod_att_picker_ui(id = "navbar",
-                                                             att= list("background_color",
-                                                                       "border_color",
-                                                                       "border_width",
-                                                                       "font_family",
-                                                                       "font_style"))
-                                         ),
-                                         shinyWidgets::switchInput(
-                                           inputId = "show_slider_input",
-                                           label = "Slider Input",
-                                           onLabel = "Show",
-                                           offLabel = "Hide"
-                                         ),
-                                         conditionalPanel(
-                                           condition = "input.show_slider_input",
-                                           mod_att_picker_ui(id = "slider_input",
-                                                             att= list("font_family",
-                                                                       "font_size",
-                                                                       "color")),
-                                           mod_att_picker_ui(id = "slider_bar",
-                                                             att = list("background_color",
-                                                                        "border_color",
-                                                                        "border_width")),
-                                           mod_att_picker_ui(id = "slider_min",
-                                                             att = list("color",
-                                                                        "font_family",
-                                                                        "font_size",
-                                                                        "background_color")),
-                                           mod_att_picker_ui(id = "slider_max",
-                                                             att = list("color",
-                                                                        "font_family",
-                                                                        "font_size",
-                                                                        "background_color"))
-                                         )
+                            sidebarPanel(
+                              shinyWidgets::switchInput(
+                                inputId = "show_action_link",
+                                label = "Action Link",
+                                onLabel = "Show",
+                                offLabel = "Hide"
+                              ),
+                              conditionalPanel(
+                                condition = "input.show_action_link",
+                                mod_att_picker_ui(id = "action_link",
+                                                  att = list("color",
+                                                             "font_family",
+                                                             "font_size",
+                                                             "text_decoration"))
+                              ),
+                              shinyWidgets::switchInput(
+                                inputId = "show_action_button",
+                                label = "Action Button",
+                                onLabel = "Show",
+                                offLabel = "Hide"
+                              ),
+                              conditionalPanel(
+                                condition = "input.show_action_button",
+                                mod_att_picker_ui(id = "action_button",
+                                                  att = list("color",
+                                                             "background_color",
+                                                             "border_color")),
+                                mod_att_picker_ui(id = "action_button_text",
+                                                  att = list("font_family",
+                                                             "font_style")),
+                                mod_att_picker_ui(id = "action_button_text_size",
+                                                  att = list("padding",
+                                                             "font_size"))
+                              ),
+                              shinyWidgets::switchInput(
+                                inputId = "show_navbar",
+                                label = "Navbar",
+                                onLabel = "Show",
+                                offLabel = "Hide"
+                              ),
+                              conditionalPanel(
+                                condition = "input.show_navbar",
+                                mod_att_picker_ui(id = "navbar",
+                                                  att= list("background_color",
+                                                            "border_color",
+                                                            "border_width",
+                                                            "font_family",
+                                                            "font_style")),
+                                mod_att_picker_ui(id = "navbar_font_size",
+                                                  att = list("font_size"))
+                              ),
+                              shinyWidgets::switchInput(
+                                inputId = "show_slider_input",
+                                label = "Slider Input",
+                                onLabel = "Show",
+                                offLabel = "Hide"
+                              ),
+                              conditionalPanel(
+                                condition = "input.show_slider_input",
+                                mod_att_picker_ui(id = "slider_input",
+                                                  att= list("font_family",
+                                                            "font_size",
+                                                            "color")),
+                                mod_att_picker_ui(id = "slider_bar",
+                                                  att = list("background_color",
+                                                             "border_color",
+                                                             "border_width")),
+                                mod_att_picker_ui(id = "slider_min",
+                                                  att = list("color",
+                                                             "font_family",
+                                                             "font_size",
+                                                             "background_color")),
+                                mod_att_picker_ui(id = "slider_max",
+                                                  att = list("color",
+                                                             "font_family",
+                                                             "font_size",
+                                                             "background_color"))
+                              )
                             ),
                           mainPanel = 
-                            mainPanel(sliderInput(inputId = "slider-test",
+                            mainPanel(fluidRow(actionButton(inputId = "action_button_test",
+                                                   label = "Action Button"),
+                                               actionLink(inputId = "action_link_test",
+                                                          label = "Action Link")
+                                               ),
+                                      sliderInput(inputId = "slider_test",
                                                   label = "Slider",
                                                   min = 0,
                                                   max = 10,
