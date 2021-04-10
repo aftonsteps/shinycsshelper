@@ -12,14 +12,8 @@ mod_font_family_ui <- function(id){
   tagList(
     selectInput(inputId = ns("font"),
                 label = "Font Family",
-                choices = c("Cookie",
-                            "Noto Sans TC",
-                            "Open Sans",
-                            "Quicksand",
-                            "Fredericka the Great",
-                            "Codystar",
-                            "Faster One"),
-                selected = "Cookie")
+                choices = FONTS,
+                selected = FONTS[1])
   )
 }
     

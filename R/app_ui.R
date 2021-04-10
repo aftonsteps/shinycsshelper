@@ -11,7 +11,7 @@ app_ui <- function(request) {
     # List the first level UI elements here 
     navbarPage("CSS Helper",
                tabPanel("Base Shiny",
-                        shinyjs::inlineCSS("@import url('https://fonts.googleapis.com/css2?family=Codystar&family=Cookie&family=Faster+One&family=Fredericka+the+Great&family=Noto+Sans+TC:wght@100&family=Open+Sans:wght@300&family=Quicksand:wght@300&display=swap');"),
+                        shinyjs::inlineCSS(FONT_IMPORT),
                         shinyjs::inlineCSS(list("body" = "font-family: 'Cookie', cursive;")),
                         mod_css_injector_ui("css_injector"),
                         sidebarLayout(
