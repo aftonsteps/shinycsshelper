@@ -75,6 +75,14 @@ app_server <- function( input, output, session ) {
                                        "font_size",
                                        "text_decoration"),
                             elem = "a.action-button")
+  
+  checkbox_group_input <- callModule(module = mod_att_picker_server,
+                                     id = "checkbox_group",
+                                     att = list("color",
+                                                "font_family",
+                                                "font_size"),
+                                     elem = ".shiny-input-checkboxgroup")
+  
   ## TODO add border-radius
   ## TODO gradients? :D :D :D :D background: linear-gradient(90deg, minColor, maxColor)
   
@@ -89,7 +97,9 @@ app_server <- function( input, output, session ) {
                         slider_input_max,
                         action_button,
                         action_button_text,
-                        action_button_text_size
+                        action_button_text_size,
+                        checkbox_group_input,
+                        checkbox_group_input_checked
                         ))
   
 }

@@ -1,7 +1,4 @@
 ## TODO's
-##actionLink()
-# checkboxGroupInput()
-# Checkbox Group Input Control
 # checkboxInput()
 # Checkbox Input Control
 # dateInput()
