@@ -12,8 +12,8 @@ mod_font_style_ui <- function(id){
   tagList(
     selectInput(inputId = ns("style"), 
                 label = "Font Style",
-                choices = c("regular", "italic", "oblique"),
-                selected = "regular")
+                choices = c("normal", "italic", "oblique"),
+                selected = "normal")
   )
 }
     

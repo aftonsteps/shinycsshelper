@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Codystar&family=Cookie&family=Faster+One&family=Fredericka+the+Great&family=Noto+Sans+TC:wght@100&family=Open+Sans:wght@300&family=Quicksand:wght@300&display=swap');
+
 a {
   color: #121212;
   font-family: Cookie;
-  font-size: 16pt;
+  font-size: 12pt;
   text-decoration: none;
 }
 
@@ -10,7 +12,7 @@ a {
   border-color: #0A86FAB8;
   border-width: 0px 0px 0px 0px;
   font-family: Cookie;
-  font-style: regular;
+  font-style: normal;
 }
 
 .irs--shiny .irs-grid-text {
@@ -47,10 +49,11 @@ a {
 
 button {
   font-family: Cookie;
-  font-style: regular;
+  font-style: normal;
 }
 
 .btn {
   padding: 0px 0px 0px 0px;
   font-size: 12pt;
 }
+

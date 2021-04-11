@@ -22,10 +22,15 @@ mod_css_injector_server <- function(input, output, session, css){
   
    css_agg <- reactive({
      css_list <- nested_unreactify(css)
-     css_to_write <-
-       do.call(what = tableHTML::make_css,
-               args = c(... = css_list, file = "inst/app/www/style.css"))
+     # css_to_write <-
+     #   do.call(what = tableHTML::make_css,
+     #           args = c(... = css_list, file = "inst/app/www/style.css"))
+     
+     write(x = FONT_IMPORT, file = CSS_FILE)
+     
      css_to_render <- do.call(what = tableHTML::make_css, args = css_list)
+     
+     write(x = css_to_render, file = CSS_FILE, append = TRUE)
      
      return(css_to_render)
    })
@@ -38,7 +43,6 @@ mod_css_injector_server <- function(input, output, session, css){
              "body {font-family: 'Cookie', cursive;} ",
              css_agg())
 
-    
     return(shinyjs::inlineCSS(css_agg()))
   })
 }
