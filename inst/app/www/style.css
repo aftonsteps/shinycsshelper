@@ -62,12 +62,14 @@ button {
 }
 
 .shiny-input-checkboxgroup {
-  color: #5B6475;
+  color: #121212;
   font-family: Cookie;
-  font-size: 11pt;
+  font-size: 12pt;
 }
 
-.checkbox input:checked {
-  color: #CC7E7E;
+.checkbox {
+  color: #121212;
+  font-family: Cookie;
+  font-size: 12pt;
 }
 

@@ -18,6 +18,19 @@ app_ui <- function(request) {
                           sidebarPanel = 
                             sidebarPanel(
                               shinyWidgets::switchInput(
+                                inputId = "show_checkbox",
+                                label = "Checkbox",
+                                onLabel = "Show",
+                                offLabel = "Hide"
+                              ),
+                              conditionalPanel(
+                                condition = "input.show_checkbox",
+                                mod_att_picker_ui(id = "checkbox",
+                                                  att = list("color",
+                                                             "font_family",
+                                                             "font_size"))
+                              ),
+                              shinyWidgets::switchInput(
                                 inputId = "show_checkbox_group",
                                 label = "Checkbox Group",
                                 onLabel = "Show",
@@ -113,17 +126,21 @@ app_ui <- function(request) {
                                                    label = "Action Button"),
                                                actionLink(inputId = "action_link_test",
                                                           label = "Action Link")),
+                                      fluidRow(
+                                        checkboxGroupInput(inputId = "checkbox_group_test",
+                                                           label = "Checkbox Group Input",
+                                                           choices = c("Option 1",
+                                                                       "Option 2",
+                                                                       "Option 3")),
+                                        checkboxInput(inputId = "checkbox_text",
+                                                      label = "Checkbox Input")
+                                      ),
                                       sliderInput(inputId = "slider_test",
                                                   label = "Slider",
                                                   min = 0,
                                                   max = 10,
                                                   value = 5,
-                                                  step = 1),
-                                      checkboxGroupInput(inputId = "checkbox_group_test",
-                                                         label = "Checkbox Group Input",
-                                                         choices = c("Option 1",
-                                                                     "Option 2",
-                                                                     "Option 3"))
+                                                  step = 1)
                           )
                         )
                ),
