@@ -17,7 +17,7 @@ app_server <- function( input, output, session ) {
   navbar_font_size <- callModule(module = mod_att_picker_server,
                             id = "navbar_font_size",
                             att = list("font_size"),
-                            elem = ".nav>li>a")
+                            elem = ".navbar-default .navbar-nav>li>a")
   
   slider_input_text <- callModule(module = mod_att_picker_server, 
                                   id = "slider_input",
@@ -74,7 +74,7 @@ app_server <- function( input, output, session ) {
                                        "font_family",
                                        "font_size",
                                        "text_decoration"),
-                            elem = "a")
+                            elem = "a.action-button")
   ## TODO add border-radius
   ## TODO gradients? :D :D :D :D background: linear-gradient(90deg, minColor, maxColor)
   
@@ -82,6 +82,7 @@ app_server <- function( input, output, session ) {
              "css_injector", 
              css = list(action_link,
                         navbar, 
+                        navbar_font_size,
                         slider_input_text, 
                         slider_input_bar,
                         slider_input_min,
