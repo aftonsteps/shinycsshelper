@@ -1,8 +1,4 @@
 ## TODO's
-# checkboxInput()
-# Checkbox Input Control
-# dateInput()
-# Create date input
 # dateRangeInput()
 # Create date range input
 # fileInput()
