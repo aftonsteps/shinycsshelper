@@ -1,6 +1,4 @@
 ## TODO's
-# dateRangeInput()
-# Create date range input
 # fileInput()
 # File Upload Control
 # numericInput()

@@ -174,29 +174,110 @@ app_ui <- function(request) {
                               )
                             ),
                           mainPanel = 
-                            mainPanel(fluidRow(actionButton(inputId = "action_button_test",
-                                                   label = "Action Button"),
-                                               actionLink(inputId = "action_link_test",
-                                                          label = "Action Link")),
-                                      fluidRow(
-                                        checkboxGroupInput(inputId = "checkbox_group_test",
-                                                           label = "Checkbox Group Input",
-                                                           choices = c("Option 1",
-                                                                       "Option 2",
-                                                                       "Option 3")),
-                                        checkboxInput(inputId = "checkbox_text",
-                                                      label = "Checkbox Input"),
-                                        dateInput(inputId = "date_test",
-                                                  label = "Date Input")
-                                      ),
-                                      sliderInput(inputId = "slider_test",
-                                                  label = "Slider",
-                                                  min = 0,
-                                                  max = 10,
-                                                  value = 5,
-                                                  step = 1)
-                          )
-                        )
+                            mainPanel(
+                              HTML("<div style = 'position: fixed; top: 60px;'>"),
+                              fluidRow(
+                                column(
+                                  width = 2,
+                                  actionButton(inputId = "action_button_test",
+                                               label = "Action Button")
+                                ),
+                                column(
+                                  width = 2,
+                                  actionLink(inputId = "action_link_test",
+                                             label = "Action Link")
+                                )
+                              ),
+                              HTML("<hr/>"),
+                              fluidRow(
+                                column(
+                                  width = 3,
+                                  checkboxGroupInput(inputId = "checkbox_group_test",
+                                                     label = "Checkbox Group Input",
+                                                     choices = c("Option 1",
+                                                                 "Option 2",
+                                                                 "Option 3"))
+                                ),
+                                column(
+                                  width = 3,
+                                  radioButtons(inputId = "radio_test",
+                                               label = "Radio Buttons",
+                                               choices = c("Choice 1",
+                                                           "Choice 2",
+                                                           "Choice 3"),
+                                               selected = "Choice 1")
+                                ),
+                                column(
+                                  width = 5,
+                                  fluidRow(                                
+                                    checkboxInput(inputId = "checkbox_test",
+                                                  label = "Checkbox Input")
+                                  ),
+                                  fluidRow(
+                                    selectInput(inputId = "select_input_test",
+                                                label = "Select Input",
+                                                choices = c("Option 1",
+                                                            "Option 2",
+                                                            "Option 3"))
+                                  )
+                                )
+                              ),
+                              HTML("<hr/>"),
+                              fluidRow(
+                                column(
+                                  width = 4,
+                                  dateInput(inputId = "date_test",
+                                            label = "Date Input")
+                                ),
+                                column(
+                                  width = 4,
+                                  sliderInput(inputId = "slider_test",
+                                              label = "Slider",
+                                              min = 0,
+                                              max = 10,
+                                              value = 5,
+                                              step = 1)
+                                )
+                              ),
+                              HTML("<hr/>"),
+                              fluidRow(
+                                column(
+                                  width = 5,
+                                  fileInput(inputId = "file_input_test",
+                                            label = "File Input")
+                                ),
+                                column(
+                                  width = 4,
+                                  selectizeInput(inputId = "selectize_input_test",
+                                                 label = "Selectize Input",
+                                                 choices = c("Option 1",
+                                                             "Option 2",
+                                                             "Option 3"),
+                                                 multiple = TRUE)
+                                )
+                              ),
+                              HTML("<hr/>"),
+                              fluidRow(
+                                column(
+                                  width = 2,
+                                  h1("H1 Text"),
+                                ),
+                                column(
+                                  width = 2,
+                                  h2("H2 Text"),
+                                ),
+                                column(
+                                  width = 2,
+                                  h3("H3 Text")
+                                ),
+                                column(
+                                  width = 2,
+                                  h4("H4 Text")
+                                )
+                              )
+                            )
+                        ),
+                        HTML("</div>"),
                ),
                tabPanel("Shiny Widgets"),
                tabPanel("Save Your CSS File",
