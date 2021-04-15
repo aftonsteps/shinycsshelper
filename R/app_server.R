@@ -56,6 +56,13 @@ app_server <- function( input, output, session ) {
                                          "border_color"),
                               elem = ".btn-default")
   
+  action_button_hover <- callModule(module = mod_att_picker_server,
+                                    id = "action_button_hover",
+                                    att = list("color",
+                                               "background_color",
+                                               "border_color"),
+                                    elem = ".btn-default:hover")
+  
   action_button_text <- callModule(module = mod_att_picker_server,
                                    id = "action_button_text",
                                    att = list("font_family",
@@ -166,6 +173,7 @@ app_server <- function( input, output, session ) {
                         action_button,
                         action_button_text,
                         action_button_text_size,
+                        action_button_hover,
                         checkbox_group_input,
                         checkbox_input,
                         date_input,

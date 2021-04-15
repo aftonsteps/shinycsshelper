@@ -117,16 +117,23 @@ app_ui <- function(request) {
                               ),
                               conditionalPanel(
                                 condition = "input.show_action_button",
+                                HTML("Action Button"),
                                 mod_att_picker_ui(id = "action_button",
                                                   att = list("color",
                                                              "background_color",
                                                              "border_color")),
+                                HTML("Action Button Text"),
                                 mod_att_picker_ui(id = "action_button_text",
                                                   att = list("font_family",
                                                              "font_style")),
                                 mod_att_picker_ui(id = "action_button_text_size",
                                                   att = list("padding",
-                                                             "font_size"))
+                                                             "font_size")),
+                                HTML("Action Button Hover"),
+                                mod_att_picker_ui(id = "action_button_hover",
+                                                  att = list("color",
+                                                             "background_color",
+                                                             "border_color"))
                               ),
                               shinyWidgets::switchInput(
                                 inputId = "show_navbar",
