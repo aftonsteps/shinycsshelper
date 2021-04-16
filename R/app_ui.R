@@ -18,6 +18,20 @@ app_ui <- function(request) {
                           sidebarPanel = 
                             sidebarPanel(
                               shinyWidgets::switchInput(
+                                inputId = "show_h1",
+                                label = "H1",
+                                onLabel = "Show",
+                                offLabel = "Hide"
+                              ),
+                              conditionalPanel(
+                                condition = "input.show_h1",
+                                mod_att_picker_ui(id = "h1",
+                                                  att = list("color",
+                                                             "background_color",
+                                                             "font_style",
+                                                             "font_size"))
+                              ),
+                              shinyWidgets::switchInput(
                                 inputId = "show_date",
                                 label = "Date Picker",
                                 onLabel = "Show",
@@ -102,10 +116,16 @@ app_ui <- function(request) {
                                 offLabel = "Hide"
                               ),
                               conditionalPanel(
+                                h3("Action Link"),
                                 condition = "input.show_action_link",
                                 mod_att_picker_ui(id = "action_link",
                                                   att = list("color",
                                                              "font_family",
+                                                             "font_size",
+                                                             "text_decoration")),
+                                h3("Action Link Hover-Over"),
+                                mod_att_picker_ui(id = "action_link_hover",
+                                                  att = list("color",
                                                              "font_size",
                                                              "text_decoration"))
                               ),
@@ -286,7 +306,52 @@ app_ui <- function(request) {
                         ),
                         HTML("</div>"),
                ),
-               tabPanel("Shiny Widgets"),
+               tabPanel("Shiny Widgets",
+                        sidebarLayout(
+                          sidebarPanel(
+                            mod_att_picker_ui(id = "sw_action_button",
+                                              att = list("background_color",
+                                                         "color",
+                                                         "font_style",
+                                                         "font_family",
+                                                         "font_size"))
+                          ),
+                          mainPanel(
+                            fluidRow(
+                              column(width = 2,
+                                     shinyWidgets::actionBttn(inputId = "sw_action_button_test",
+                                                              label = "Action Bttn")),
+                              column(width = 6,
+                                     shinyWidgets::actionGroupButtons(inputIds = c("action_group_bttn_1",
+                                                                                   "action_group_bttn_2",
+                                                                                   "action_group_bttn_3"),
+                                                                      size = "lg",
+                                                                      labels = list("Button 1", "Button 2", "Button 3")))
+                            ),
+                            HTML("<hr/>"),
+                            fluidRow(column(width = 4,
+                                            h4("Checkbox Group Buttons"),
+                                            shinyWidgets::checkboxGroupButtons(inputId = "sw_checkbox_group_test",
+                                                                               choices = c("Option 1", 
+                                                                                           "Option 2",
+                                                                                           "Option 3"),
+                                                                               size = "lg")),
+                                     column(width = 4,
+                                            h4("Radio Group Buttons"),
+                                            shinyWidgets::radioGroupButtons(inputId = "sw_radio_group_test",
+                                                                            choices = c("Choice 1",
+                                                                                        "Choice 2",
+                                                                                        "Choice 3"),
+                                                                            size = "lg"))
+                                     ),
+                            shinyWidgets::awesomeCheckbox(
+                              inputId = "sw_checkbox_text",
+                              label = "Checkbox", 
+                              value = TRUE
+                            )
+                          )
+                        )
+               ),
                tabPanel("Save Your CSS File",
                         mod_download_css_ui("style_css")),
                navbarMenu("More",

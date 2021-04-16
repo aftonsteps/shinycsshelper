@@ -83,7 +83,15 @@ app_server <- function( input, output, session ) {
                                        "text_decoration"),
                             elem = "a.action-button")
   
+  action_link_hover <- 
+    callModule(module = mod_att_picker_server,
+               id = "action_link_hover",
+               att = list("color",
+                          "font_size",
+                          "text_decoration"),
+               elem = "a.action-button:hover")
   checkbox_group_input <- callModule(module = mod_att_picker_server,
+  
                                      id = "checkbox_group",
                                      att = list("color",
                                                 "font_family",
@@ -158,12 +166,34 @@ app_server <- function( input, output, session ) {
                                                           "font_style"),
                                                elem = ".datepicker table tr td.new:hover")
   
+  h1 <- 
+    callModule(module = mod_att_picker_server,
+               id = "h1",
+               att = list("color",
+                          "background_color",
+                          "font_style",
+                          "font_size"),
+               elem = "h1")
+  
+  sw_action_button <- 
+    callModule(module = mod_att_picker_server,
+               id = "sw_action_button",
+               att = list("background_color",
+                          "color",
+                          "font_style",
+                          "font_family",
+                          "font_size"),
+               elem = ".action-button")
+  
   ## TODO add border-radius
   ## TODO gradients? :D :D :D :D background: linear-gradient(90deg, minColor, maxColor)
   
   callModule(mod_css_injector_server, 
              "css_injector", 
-             css = list(action_link,
+             css = list(sw_action_button,
+                        h1, 
+                        action_link,
+                        action_link_hover,
                         navbar, 
                         navbar_font_size,
                         slider_input_text, 
