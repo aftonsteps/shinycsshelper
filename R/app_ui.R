@@ -318,15 +318,21 @@ app_ui <- function(request) {
                           ),
                           mainPanel(
                             fluidRow(
-                              column(width = 2,
+                              column(width = 3,
                                      shinyWidgets::actionBttn(inputId = "sw_action_button_test",
                                                               label = "Action Bttn")),
-                              column(width = 6,
+                              column(width = 5,
                                      shinyWidgets::actionGroupButtons(inputIds = c("action_group_bttn_1",
                                                                                    "action_group_bttn_2",
                                                                                    "action_group_bttn_3"),
                                                                       size = "lg",
-                                                                      labels = list("Button 1", "Button 2", "Button 3")))
+                                                                      labels = list("Button 1", "Button 2", "Button 3"))),
+                              column(width = 4,
+                                     shinyWidgets::switchInput(inputId = "sw_switch_input_test",
+                                                               label = "Switch Input",
+                                                               labelWidth = "100px",
+                                                               size = "large")
+                                     )
                             ),
                             HTML("<hr/>"),
                             fluidRow(column(width = 4,
@@ -342,13 +348,45 @@ app_ui <- function(request) {
                                                                             choices = c("Choice 1",
                                                                                         "Choice 2",
                                                                                         "Choice 3"),
-                                                                            size = "lg"))
-                                     ),
-                            shinyWidgets::awesomeCheckbox(
-                              inputId = "sw_checkbox_text",
-                              label = "Checkbox", 
-                              value = TRUE
-                            )
+                                                                            size = "lg")
+                                     )
+                            ),
+                            HTML("<hr/>"),
+                            fluidRow(
+                              column(
+                                width = 3,
+                                shinyWidgets::pickerInput(inputId = "sw_picker_test",
+                                                          label = "Picker Input",
+                                                          choices = c("Option 1",
+                                                                      "Option 2",
+                                                                      "Option 3"))
+                              ),
+                              column(
+                                width = 3,
+                                shinyWidgets::prettyCheckbox(inputId = "sw_pretty_checkbox_test",
+                                                             label = "Pretty Checkbox"),
+                                shinyWidgets::awesomeCheckbox(inputId = "sw_awesome_checkbox_test",
+                                                              label = "Aweseom Checkbox")
+                              ),
+                              column(
+                                width = 3,
+                                shinyWidgets::materialSwitch(inputId = "sw_material_switch_test",
+                                                             label = "Material Switch"),
+                                shinyWidgets::prettyToggle(inputId = "sw_pretty_toggle_test",
+                                                           label_on = "Pretty Toggle On",
+                                                           label_off = "Pretty Toggle Off")
+                              )
+                            ),
+                            HTML("<hr/>"),
+                            shinyWidgets::autonumericInput(inputId = "sw_auto_numeric_input_test",
+                                                           label = "Auto-Numeric Input",
+                                                           value = 0.00,
+                                                           currencySymbol = "$"),
+                            #shinyWidgets::currencyInput()
+                            #shinyWidgets::circleButton()
+                            # shinyWidgets::knobInput(inputId = "sw_knob_input_test",
+                            #                         label = "Knob Input",
+                            #                         value = 0)
                           )
                         )
                ),
