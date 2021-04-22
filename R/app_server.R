@@ -90,6 +90,7 @@ app_server <- function( input, output, session ) {
                           "font_size",
                           "text_decoration"),
                elem = "a.action-button:hover")
+  
   checkbox_group_input <- callModule(module = mod_att_picker_server,
   
                                      id = "checkbox_group",
@@ -183,7 +184,8 @@ app_server <- function( input, output, session ) {
                           "font_style",
                           "font_family",
                           "font_size"),
-               elem = ".action-button")
+               elem = ".bttn-unite,.bttn-unite.bttn-md") 
+  ## TODO once the menu allows a user to pick any size button, expand above class
   
   ## TODO add border-radius
   ## TODO gradients? :D :D :D :D background: linear-gradient(90deg, minColor, maxColor)
