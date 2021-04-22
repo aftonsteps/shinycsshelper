@@ -183,8 +183,53 @@ app_server <- function( input, output, session ) {
                           "color",
                           "font_style",
                           "font_family",
-                          "font_size"),
+                          "font_size",
+                          "border_color"),
                elem = ".bttn-unite,.bttn-unite.bttn-md") 
+  
+  sw_action_button_hover <-
+    callModule(module = mod_att_picker_server,
+               id = "sw_action_button_hover",
+               att = list("background",
+                          "color"),
+               elem = ".bttn-unite.bttn-default:focus, .bttn-unite.bttn-default:hover")
+  
+  sw_action_group_buttons <- 
+    callModule(module = mod_att_picker_server,
+               id = "sw_action_group_buttons",
+               att = list("background_color",
+                          "color",
+                          "font_style",
+                          "font_family",
+                          "border_color"),
+               elem = ".btn-default")
+  
+  sw_action_group_buttons_hover <- 
+    callModule(module = mod_att_picker_server,
+               id = "sw_action_group_buttons_hover",
+               att = list("background_color",
+                          "color",
+                          "border_color"),
+               elem = ".btn-default:hover")
+  
+  sw_switch <- 
+    callModule(module = mod_att_picker_server,
+               id = "sw_switch",
+               att = list("background",
+                          "color",
+                          "font_style",
+                          "font_family"),
+               elem = ".bootstrap-switch .bootstrap-switch-label")
+  
+  sw_switch_toggle <-
+    callModule(module = mod_att_picker_server,
+               id = "sw_switch_toggle",
+               att = list("background",
+                          "color",
+                          "font_style",
+                          "font_family"),
+               elem = ".bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary, .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary")
+  
   ## TODO once the menu allows a user to pick any size button, expand above class
   
   ## TODO add border-radius
@@ -192,7 +237,10 @@ app_server <- function( input, output, session ) {
   
   callModule(mod_css_injector_server, 
              "css_injector", 
-             css = list(sw_action_button,
+             css = list(sw_switch,
+                        sw_switch_toggle,
+                        sw_action_button,
+                        sw_action_button_hover,
                         h1, 
                         action_link,
                         action_link_hover,
@@ -216,7 +264,9 @@ app_server <- function( input, output, session ) {
                         date_calendar_active_day,
                         date_calendar_active_day_hover,
                         date_calendar_old_day_hover,
-                        date_calendar_future_day_hover
+                        date_calendar_future_day_hover,
+                        sw_action_group_buttons,
+                        sw_action_group_buttons_hover
                         ))
   
 }

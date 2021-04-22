@@ -8,12 +8,11 @@ app_ui <- function(request) {
   tagList(
     # Leave this function for adding external resources
     golem_add_external_resources(),
-    # List the first level UI elements here 
+    shinyjs::inlineCSS(FONT_IMPORT),
+    shinyjs::inlineCSS(list("body" = "font-family: 'Cookie', cursive;")),
+    mod_css_injector_ui("css_injector"),
     navbarPage("CSS Helper",
                tabPanel("Base Shiny",
-                        shinyjs::inlineCSS(FONT_IMPORT),
-                        shinyjs::inlineCSS(list("body" = "font-family: 'Cookie', cursive;")),
-                        mod_css_injector_ui("css_injector"),
                         sidebarLayout(
                           sidebarPanel = 
                             sidebarPanel(
@@ -309,47 +308,105 @@ app_ui <- function(request) {
                tabPanel("Shiny Widgets",
                         sidebarLayout(
                           sidebarPanel(
-                            mod_att_picker_ui(id = "sw_action_button",
-                                              att = list("background_color",
-                                                         "color",
-                                                         "font_style",
-                                                         "font_family",
-                                                         "font_size"))
+                            shinyWidgets::switchInput(
+                              inputId = "show_sw_action_btn",
+                              label = "Action Buttons",
+                              onLabel = "Show",
+                              offLabel = "Hide"
+                            ),
+                            conditionalPanel(
+                              condition = "input.show_sw_action_btn",
+                              h3("Action Btn"),
+                              mod_att_picker_ui(id = "sw_action_button",
+                                                att = list("background_color",
+                                                           "color",
+                                                           "font_style",
+                                                           "font_family",
+                                                           "font_size",
+                                                           "border_color")),
+                              h3("Action Btn Hover-Over"),
+                              mod_att_picker_ui(id = "sw_action_button_hover",
+                                                att = list("background",
+                                                           "color"))
+                            ),
+                            shinyWidgets::switchInput(
+                              inputId = "show_sw_action_group_buttons",
+                              label = "Radio/Checkbox Buttons",
+                              onLabel = "Show",
+                              offLabel = "Hide"
+                            ),
+                            conditionalPanel(
+                              condition = "input.show_sw_action_group_buttons",
+                              h3("Radio/Checkbox Buttons"),
+                              mod_att_picker_ui(id = "sw_action_group_buttons",
+                                                att = list("background_color",
+                                                           "color",
+                                                           "font_style",
+                                                           "font_family",
+                                                           "border_color")),
+                              h3("Radio/Checkbox Buttons Hover-Over"),
+                              mod_att_picker_ui(id = "sw_action_group_buttons_hover",
+                                                att = list("background_color",
+                                                           "color",
+                                                           "border_color"))
+                            ), 
+                            shinyWidgets::switchInput(
+                              inputId = "show_sw_switch",
+                              label = "Switch Input",
+                              onLabel = "Show",
+                              offLabel = "Hide"
+                            ),
+                            conditionalPanel(
+                              condition = "input.show_sw_switch",
+                              h3("Switch Input"),
+                              mod_att_picker_ui(id = "sw_switch",
+                                                att = list("background",
+                                                           "color",
+                                                           "font_style",
+                                                           "font_family")),
+                              h3("Switch Input Toggle On"),
+                              mod_att_picker_ui(id = "sw_switch_toggle",
+                                                att = list("background",
+                                                           "color",
+                                                           "font_style",
+                                                           "font_family"))
+                            )
                           ),
                           mainPanel(
                             fluidRow(
                               column(width = 3,
                                      shinyWidgets::actionBttn(inputId = "sw_action_button_test",
                                                               label = "Action Bttn")),
+                              column(width = 6,
+                                     shinyWidgets::switchInput(inputId = "sw_switch_input_test",
+                                                               label = "Switch Input",
+                                                               labelWidth = "400px",
+                                                               size = "large")
+                                     )
+                            ),
+                            HTML("<hr/>"),
+                            fluidRow(
                               column(width = 5,
                                      shinyWidgets::actionGroupButtons(inputIds = c("action_group_bttn_1",
                                                                                    "action_group_bttn_2",
                                                                                    "action_group_bttn_3"),
                                                                       size = "lg",
                                                                       labels = list("Button 1", "Button 2", "Button 3"))),
-                              column(width = 4,
-                                     shinyWidgets::switchInput(inputId = "sw_switch_input_test",
-                                                               label = "Switch Input",
-                                                               labelWidth = "100px",
-                                                               size = "large")
-                                     )
-                            ),
-                            HTML("<hr/>"),
-                            fluidRow(column(width = 4,
-                                            h4("Checkbox Group Buttons"),
-                                            shinyWidgets::checkboxGroupButtons(inputId = "sw_checkbox_group_test",
-                                                                               choices = c("Option 1", 
-                                                                                           "Option 2",
-                                                                                           "Option 3"),
-                                                                               size = "lg")),
-                                     column(width = 4,
-                                            h4("Radio Group Buttons"),
-                                            shinyWidgets::radioGroupButtons(inputId = "sw_radio_group_test",
-                                                                            choices = c("Choice 1",
-                                                                                        "Choice 2",
-                                                                                        "Choice 3"),
-                                                                            size = "lg")
-                                     )
+                              column(width = 12,
+                                     h4("Checkbox Group Buttons"),
+                                     shinyWidgets::checkboxGroupButtons(inputId = "sw_checkbox_group_test",
+                                                                        choices = c("Option 1", 
+                                                                                    "Option 2",
+                                                                                    "Option 3"),
+                                                                        size = "lg")),
+                              column(width = 12,
+                                     h4("Radio Group Buttons"),
+                                     shinyWidgets::radioGroupButtons(inputId = "sw_radio_group_test",
+                                                                     choices = c("Choice 1",
+                                                                                 "Choice 2",
+                                                                                 "Choice 3"),
+                                                                     size = "lg")
+                              )
                             ),
                             HTML("<hr/>"),
                             fluidRow(
