@@ -288,25 +288,6 @@ app_ui <- function(request) {
                                                  multiple = TRUE)
                                 )
                               ),
-                              HTML("<hr/>"),
-                              fluidRow(
-                                column(
-                                  width = 2,
-                                  h1("H1 Text"),
-                                ),
-                                column(
-                                  width = 2,
-                                  h2("H2 Text"),
-                                ),
-                                column(
-                                  width = 2,
-                                  h3("H3 Text")
-                                ),
-                                column(
-                                  width = 2,
-                                  h4("H4 Text")
-                                )
-                              )
                             )
                         ),
                         HTML("</div>"),
@@ -435,6 +416,37 @@ app_ui <- function(request) {
                             # shinyWidgets::knobInput(inputId = "sw_knob_input_test",
                             #                         label = "Knob Input",
                             #                         value = 0)
+                          )
+                        )
+               ),
+               tabPanel("Text",
+                        sidebarLayout(
+                          sidebarPanel(
+                            
+                          ),
+                          mainPanel(
+                            fluidRow(
+                              column(
+                                width = 2,
+                                h1("H1 Text"),
+                              ),
+                              column(
+                                width = 2,
+                                h2("H2 Text"),
+                              ),
+                              column(
+                                width = 2,
+                                h3("H3 Text")
+                              ),
+                              column(
+                                width = 2,
+                                h4("H4 Text")
+                              )
+                            ),
+                            HTML("<hr/>"),
+                            fluidRow(
+                              HTML(lorem_text)
+                            )
                           )
                         )
                ),
