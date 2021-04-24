@@ -176,6 +176,19 @@ app_server <- function( input, output, session ) {
                           "font_size"),
                elem = "h1")
   
+  form_control <- 
+    callModule(module = mod_att_picker_server,
+               id = "form_control",
+               att = list("color",
+                          "font_family",
+                          "font_style",
+                          "font_size",
+                          "background_color",
+                          "border_color",
+                          "border_width",
+                          "box_shadow"),
+               elem = ".form-control")
+  
   sw_switch <- 
     callModule(module = mod_att_picker_server,
                id = "sw_switch",
@@ -185,14 +198,43 @@ app_server <- function( input, output, session ) {
                           "font_family"),
                elem = ".bootstrap-switch .bootstrap-switch-label")
   
-  sw_switch_toggle <-
+  sw_switch_toggle_on <-
     callModule(module = mod_att_picker_server,
-               id = "sw_switch_toggle",
+               id = "sw_switch_toggle_on",
                att = list("background",
                           "color",
                           "font_style",
                           "font_family"),
                elem = ".bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary, .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary")
+  
+  sw_switch_toggle_off <-
+    callModule(module = mod_att_picker_server,
+               id = "sw_switch_toggle_off",
+               att = list("background",
+                          "color",
+                          "font_style",
+                          "font_family"),
+               elem = ".bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default, .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default")
+  
+  sw_switch_border <-
+    callModule(module = mod_att_picker_server,
+               id = "sw_switch_border",
+               att = list("box_shadow"),
+               elem = ".bootstrap-switch.bootstrap-switch-focused")
+  
+  sw_picker_dropdown <-
+    callModule(module = mod_att_picker_server,
+               id = "sw_picker_dropdown",
+               att = list("color",
+                          "background_color"),
+               elem = ".dropdown-menu > .active > a, .dropdown-menu > .active > a:focus, .dropdown-menu > .active > a:hover")
+  
+  sw_picker_drowdown_hover <-
+    callModule(module = mod_att_picker_server,
+               id = "sw_picker_dropdown_hover",
+               att = list("color",
+                          "background_color"),
+               elem = ".dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover")
   
   ## TODO once the menu allows a user to pick any size button, expand above class
   
@@ -201,8 +243,13 @@ app_server <- function( input, output, session ) {
   
   callModule(mod_css_injector_server, 
              "css_injector", 
-             css = list(sw_switch,
-                        sw_switch_toggle,
+             css = list(form_control,
+                        sw_switch,
+                        sw_switch_toggle_on,
+                        sw_switch_toggle_off,
+                        sw_switch_border,
+                        sw_picker_dropdown,
+                        sw_picker_drowdown_hover,
                         h1, 
                         action_link,
                         action_link_hover,

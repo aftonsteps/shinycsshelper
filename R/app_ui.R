@@ -329,11 +329,56 @@ app_ui <- function(request) {
                                                            "font_style",
                                                            "font_family")),
                               h3("Switch Input Toggle On"),
-                              mod_att_picker_ui(id = "sw_switch_toggle",
+                              mod_att_picker_ui(id = "sw_switch_toggle_on",
                                                 att = list("background",
                                                            "color",
                                                            "font_style",
-                                                           "font_family"))
+                                                           "font_family")),
+                              h3("Switch Input Toggle Off"),
+                              mod_att_picker_ui(id = "sw_switch_toggle_off",
+                                                att = list("background",
+                                                           "color",
+                                                           "font_style",
+                                                           "font_family")),
+                              h3("Switch Input Border"),
+                              mod_att_picker_ui(id = "sw_switch_border",
+                                                att = list("box_shadow"))
+                            ),
+                            shinyWidgets::switchInput(
+                              inputId = "show_sw_picker_input",
+                              label = "Dropdown Picker Input",
+                              onLabel = "Show",
+                              offLabel = "Hide"
+                            ),
+                            conditionalPanel(
+                              condition = "input.show_sw_picker_input",
+                              h3("Picker Dropdown"),
+                              h4("Note: Main color controlled by Action Button"),
+                              mod_att_picker_ui(id = "sw_picker_dropdown",
+                                                att = list("color",
+                                                           "background_color")),
+                              h3("Picker Dropdown Hover"),
+                              mod_att_picker_ui(id = "sw_picker_dropdown_hover",
+                                                att = list("color",
+                                                           "background_color"))
+                            ),
+                            shinyWidgets::switchInput(
+                              inputId = "show_form_input",
+                              label = "Form Input",
+                              onLabel = "Show",
+                              offLabel = "Hide"
+                            ),
+                            conditionalPanel(
+                              condition = "input.show_form_input",
+                              mod_att_picker_ui(id = "form_control",
+                                                att = list("color",
+                                                           "font_family",
+                                                           "font_style",
+                                                           "font_size",
+                                                           "background_color",
+                                                           "border_color",
+                                                           "border_width",
+                                                           "box_shadow"))
                             )
                           ),
                           mainPanel(
@@ -343,7 +388,7 @@ app_ui <- function(request) {
                                                                label = "Switch Input",
                                                                labelWidth = "400px",
                                                                size = "large")
-                                     )
+                              )
                             ),
                             HTML("<hr/>"),
                             fluidRow(
@@ -379,21 +424,6 @@ app_ui <- function(request) {
                                                                       "Option 2",
                                                                       "Option 3"))
                               ),
-                              column(
-                                width = 3,
-                                shinyWidgets::prettyCheckbox(inputId = "sw_pretty_checkbox_test",
-                                                             label = "Pretty Checkbox"),
-                                shinyWidgets::awesomeCheckbox(inputId = "sw_awesome_checkbox_test",
-                                                              label = "Aweseom Checkbox")
-                              ),
-                              column(
-                                width = 3,
-                                shinyWidgets::materialSwitch(inputId = "sw_material_switch_test",
-                                                             label = "Material Switch"),
-                                shinyWidgets::prettyToggle(inputId = "sw_pretty_toggle_test",
-                                                           label_on = "Pretty Toggle On",
-                                                           label_off = "Pretty Toggle Off")
-                              )
                             ),
                             HTML("<hr/>"),
                             shinyWidgets::autonumericInput(inputId = "sw_auto_numeric_input_test",
