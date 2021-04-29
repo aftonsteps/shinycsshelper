@@ -17,20 +17,6 @@ app_ui <- function(request) {
                           sidebarPanel = 
                             sidebarPanel(
                               shinyWidgets::switchInput(
-                                inputId = "show_h1",
-                                label = "H1",
-                                onLabel = "Show",
-                                offLabel = "Hide"
-                              ),
-                              conditionalPanel(
-                                condition = "input.show_h1",
-                                mod_att_picker_ui(id = "h1",
-                                                  att = list("color",
-                                                             "background_color",
-                                                             "font_style",
-                                                             "font_size"))
-                              ),
-                              shinyWidgets::switchInput(
                                 inputId = "show_date",
                                 label = "Date Picker",
                                 onLabel = "Show",
@@ -292,10 +278,78 @@ app_ui <- function(request) {
                         ),
                         HTML("</div>"),
                ),
-               tabPanel("Text",
+               tabPanel("Text Elements",
                         sidebarLayout(
                           sidebarPanel(
-                            
+                            shinyWidgets::switchInput(inputId = "show_h1",
+                                                      label = "H1",
+                                                      onLabel = "Show",
+                                                      offLabel = "Hide"),
+                            conditionalPanel(
+                              condition = "input.show_h1",
+                              mod_att_picker_ui(id = "h1",
+                                                att = list("color",
+                                                           "background_color",
+                                                           "font_family",
+                                                           "font_style",
+                                                           "font_size"))
+                            ),
+                            shinyWidgets::switchInput(
+                              inputId = "show_h2",
+                              label = "H2",
+                              onLabel = "Show",
+                              offLabel = "Hide"),
+                            conditionalPanel(
+                              condition = "input.show_h2",
+                              mod_att_picker_ui(id = "h2",
+                                                att = list("color",
+                                                           "background_color",
+                                                           "font_family",
+                                                           "font_style",
+                                                           "font_size"))
+                            ),
+                            shinyWidgets::switchInput(
+                              inputId = "show_h3",
+                              label = "H3",
+                              onLabel = "Show",
+                              offLabel = "Hide"),
+                            conditionalPanel(
+                              condition = "input.show_h3",
+                              mod_att_picker_ui(id = "h3",
+                                                att = list("color",
+                                                           "background_color",
+                                                           "font_family",
+                                                           "font_style",
+                                                           "font_size"))
+                            ),
+                            shinyWidgets::switchInput(
+                              inputId = "show_h4",
+                              label = "H4",
+                              onLabel = "Show",
+                              offLabel = "Hide"),
+                            conditionalPanel(
+                              condition = "input.show_h4",
+                              mod_att_picker_ui(id = "h4",
+                                                att = list("color",
+                                                           "background_color",
+                                                           "font_family",
+                                                           "font_style",
+                                                           "font_size"))
+                            ),
+                            shinyWidgets::switchInput(
+                              inputId = "show_p",
+                              label = "paragraph",
+                              onLabel = "Show",
+                              offLabel = "Hide"),
+                            conditionalPanel(
+                              condition = "input.show_p",
+                              mod_att_picker_ui(id = "p",
+                                                att = list("color",
+                                                           "background_color",
+                                                           "font_family",
+                                                           "font_style",
+                                                           "font_size"))
+                            )
                           ),
                           mainPanel(
                             fluidRow(
@@ -318,7 +372,7 @@ app_ui <- function(request) {
                             ),
                             HTML("<hr/>"),
                             fluidRow(
-                              HTML(lorem_text)
+                              HTML(paste0("<p>", lorem_text, "</p>"))
                             )
                           )
                         )

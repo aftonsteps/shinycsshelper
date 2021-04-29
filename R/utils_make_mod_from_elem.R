@@ -26,7 +26,7 @@ make_html_att_from_ns_tag <- function(att) {
 }
 
 create_ui_mods_from_list <- function(att, ns) {
-  uis <- mapply(function(f, x) { f(x) },
+  uis <- mapply(function(f, x) { f(x) }, ## TODO This is where to inject arguments?
                 lapply(make_mod_ui_from_att(att), match.fun),
                 ns(make_att_name_from_att(att)))
   return(uis)

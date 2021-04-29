@@ -38,10 +38,4 @@ mod_att_picker_server <- function(input, output, session, att, elem){
               atts = atts,
               vals = vals))
 }
-    
-## To be copied in the UI
-# mod_att_picker_ui("att_picker_ui_1")
-    
-## To be copied in the server
-# callModule(mod_att_picker_server, "att_picker_ui_1")
  

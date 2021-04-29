@@ -176,6 +176,43 @@ app_server <- function( input, output, session ) {
                           "font_size"),
                elem = "h1")
   
+  h2 <- 
+    callModule(module = mod_att_picker_server,
+               id = "h1",
+               att = list("color",
+                          "background_color",
+                          "font_style",
+                          "font_size"),
+               elem = "h2")
+  
+  h3 <- 
+    callModule(module = mod_att_picker_server,
+               id = "h1",
+               att = list("color",
+                          "background_color",
+                          "font_style",
+                          "font_size"),
+               elem = "h3")
+  
+  h4 <- 
+    callModule(module = mod_att_picker_server,
+               id = "h1",
+               att = list("color",
+                          "background_color",
+                          "font_style",
+                          "font_size"),
+               elem = "h4")
+  
+  p <- 
+    callModule(module = mod_att_picker_server,
+               id = "p",
+               att = list("color",
+                          "background_color",
+                          "font_family",
+                          "font_style",
+                          "font_size"),
+               elem = "p")
+  
   ## TODO once the menu allows a user to pick any size button, expand above class
   
   ## TODO add border-radius
@@ -183,7 +220,12 @@ app_server <- function( input, output, session ) {
   
   callModule(mod_css_injector_server, 
              "css_injector", 
-             css = list(action_link,
+             css = list(h1, 
+                        h2,
+                        h3,
+                        h4,
+                        p,
+                        action_link,
                         action_link_hover,
                         navbar, 
                         navbar_font_size,
