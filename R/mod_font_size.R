@@ -7,12 +7,12 @@
 #' @noRd 
 #'
 #' @importFrom shiny NS tagList 
-mod_font_size_ui <- function(id){
+mod_font_size_ui <- function(id, value = 12){
   ns <- NS(id)
   tagList(
     shinyWidgets::numericInputIcon(inputId = ns("font_size"),
                                    label = "Font Size",
-                                   value = 12,
+                                   value = value,
                                    min = 0,
                                    icon = list(NULL, "pt"))
   )

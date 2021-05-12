@@ -12,7 +12,7 @@ app_ui <- function(request) {
     shinyjs::inlineCSS(list("body" = "font-family: 'Cookie', cursive;")),
     mod_css_injector_ui("css_injector"),
     navbarPage("CSS Helper",
-               tabPanel("Shiny Inputs",
+               tabPanel("Style Shiny Inputs",
                         sidebarLayout(
                           sidebarPanel = 
                             sidebarPanel(
@@ -148,15 +148,25 @@ app_ui <- function(request) {
                               ),
                               conditionalPanel(
                                 condition = "input.show_navbar",
+                                h3("Navbar"),
                                 mod_att_picker_ui(id = "navbar",
-                                                  att= list("background_color",
-                                                            "border_color",
-                                                            "border_width",
+                                                  att = list(c("background_color", "#000000"),
+                                                            c("border_color", "#000000"),
+                                                            c("border_width"),
                                                             "font_family",
                                                             "font_style")),
                                 mod_att_picker_ui(id = "navbar_font_size",
-                                                  att = list("font_size"))
-                              ),
+                                                  att = list("font_size")),
+                                h3("Navbar Hover-Over"),
+                                mod_att_picker_ui(id = "navbar_hover",
+                                                  att = list(c("color", "#000"),
+                                                             c("background_color", "#00D5FFDD"),
+                                                             c("border_color", "#CCC"))),
+                                h3("Navbar Selected"),
+                                mod_att_picker_ui(id = "navbar_selected",
+                                                  att = list(c("color", "#00D5FFDD"),
+                                                             c("background_color", "#FFF"),
+                                                             c("border_color", "#00D5FFDD")))),
                               shinyWidgets::switchInput(
                                 inputId = "show_slider_input",
                                 label = "Slider Input",
@@ -165,30 +175,37 @@ app_ui <- function(request) {
                               ),
                               conditionalPanel(
                                 condition = "input.show_slider_input",
+                                h4("Slider Tick Text"),
                                 mod_att_picker_ui(id = "slider_input",
                                                   att= list("font_family",
                                                             "font_size",
                                                             "color")),
+                                h4("Slider Background"),
+                                mod_att_picker_ui(id = "slider_background",
+                                                  att= list(c("background_color", "#FFFFFF"))),
+                                h4("Slider Bar"),
                                 mod_att_picker_ui(id = "slider_bar",
                                                   att = list("background_color",
                                                              "border_color",
                                                              "border_width")),
+                                h4("Slider Min"),
                                 mod_att_picker_ui(id = "slider_min",
                                                   att = list("color",
                                                              "font_family",
                                                              "font_size",
                                                              "background_color")),
+                                h4("Slider Current Value"),
+                                mod_att_picker_ui(id = "slider_current",
+                                                  att = list("color",
+                                                             "font_family",
+                                                             "font_size",
+                                                             "background_color")),
+                                h4("Slider Max"),
                                 mod_att_picker_ui(id = "slider_max",
                                                   att = list("color",
                                                              "font_family",
                                                              "font_size",
-                                                             "background_color"
-                                                  )
-                                ),
-                                shinyWidgets::awesomeCheckbox(inputId = "show_sw",
-                                                              label = "Include Shiny Widgets",
-                                                              value = FALSE
-                                ),
+                                                             "background_color"))
                               )
                             ),
                           mainPanel = 
@@ -278,7 +295,7 @@ app_ui <- function(request) {
                         ),
                         HTML("</div>"),
                ),
-               tabPanel("Text Elements",
+               tabPanel("Style Text Elements",
                         sidebarLayout(
                           sidebarPanel(
                             shinyWidgets::switchInput(inputId = "show_h1",
@@ -289,10 +306,10 @@ app_ui <- function(request) {
                               condition = "input.show_h1",
                               mod_att_picker_ui(id = "h1",
                                                 att = list("color",
-                                                           "background_color",
+                                                           c("background_color", "#FFFFFF"),
                                                            "font_family",
                                                            "font_style",
-                                                           "font_size"))
+                                                           c("font_size", 36)))
                             ),
                             shinyWidgets::switchInput(
                               inputId = "show_h2",
@@ -303,10 +320,10 @@ app_ui <- function(request) {
                               condition = "input.show_h2",
                               mod_att_picker_ui(id = "h2",
                                                 att = list("color",
-                                                           "background_color",
+                                                           c("background_color", "#FFFFFF"),
                                                            "font_family",
                                                            "font_style",
-                                                           "font_size"))
+                                                           c("font_size", 28)))
                             ),
                             shinyWidgets::switchInput(
                               inputId = "show_h3",
@@ -317,10 +334,10 @@ app_ui <- function(request) {
                               condition = "input.show_h3",
                               mod_att_picker_ui(id = "h3",
                                                 att = list("color",
-                                                           "background_color",
+                                                           c("background_color", "#FFFFFF"),
                                                            "font_family",
                                                            "font_style",
-                                                           "font_size"))
+                                                           c("font_size", 20)))
                             ),
                             shinyWidgets::switchInput(
                               inputId = "show_h4",
@@ -331,10 +348,10 @@ app_ui <- function(request) {
                               condition = "input.show_h4",
                               mod_att_picker_ui(id = "h4",
                                                 att = list("color",
-                                                           "background_color",
+                                                           c("background_color", "#FFFFFF"),
                                                            "font_family",
                                                            "font_style",
-                                                           "font_size"))
+                                                           c("font_size", 12)))
                             ),
                             shinyWidgets::switchInput(
                               inputId = "show_p",
@@ -345,7 +362,7 @@ app_ui <- function(request) {
                               condition = "input.show_p",
                               mod_att_picker_ui(id = "p",
                                                 att = list("color",
-                                                           "background_color",
+                                                           c("background_color", "#FFFFFF"),
                                                            "font_family",
                                                            "font_style",
                                                            "font_size"))
@@ -378,10 +395,7 @@ app_ui <- function(request) {
                         )
                ),
                tabPanel("Save Your CSS File",
-                        mod_download_css_ui("style_css")),
-               navbarMenu("More",
-                          tabPanel("Sub-Component A"),
-                          tabPanel("Sub-Component B"))
+                        mod_download_css_ui("style_css"))
     )
   )
 }

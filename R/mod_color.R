@@ -7,12 +7,12 @@
 #' @noRd 
 #'
 #' @importFrom shiny NS tagList 
-mod_color_ui <- function(id){
+mod_color_ui <- function(id, value = "#121212"){
   ns <- NS(id)
   tagList(
     colourpicker::colourInput(inputId = ns("col"),
                               label = "Color", 
-                              value = "#121212",
+                              value = value,
                               allowTransparent = FALSE,
                               closeOnClick = TRUE)
   )

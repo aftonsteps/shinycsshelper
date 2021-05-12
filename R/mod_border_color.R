@@ -7,12 +7,12 @@
 #' @noRd 
 #'
 #' @importFrom shiny NS tagList 
-mod_border_color_ui <- function(id){
+mod_border_color_ui <- function(id, value = "#ccc"){
   ns <- NS(id)
   tagList(
     colourpicker::colourInput(inputId = ns("col"),
                               label = "Border Color", 
-                              value = "#0A86FAB8",
+                              value = value,
                               allowTransparent = TRUE,
                               closeOnClick = TRUE),
   )

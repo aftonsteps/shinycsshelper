@@ -26,9 +26,14 @@ make_html_att_from_ns_tag <- function(att) {
 }
 
 create_ui_mods_from_list <- function(att, ns) {
-  uis <- mapply(function(f, x) { f(x) }, ## TODO This is where to inject arguments?
-                lapply(make_mod_ui_from_att(att), match.fun),
-                ns(make_att_name_from_att(att)))
+  uis <- mapply(function(f, x, value) { 
+    if (length(formals(f)) > 1 & length(value) > 0) {
+      return(f(x, value))
+    } else { return(f(x)) }
+  },
+                lapply(make_mod_ui_from_att(extract_first_elem(att)), match.fun),
+                ns(make_att_name_from_att(extract_first_elem(att))),
+                extract_non_first_elem(att))
   return(uis)
 }
 
@@ -47,4 +52,12 @@ unwrap_atts <- function(mod) {
 
 unwrap_vals <- function(mod) {
   return(mod$vals())
+}
+
+extract_first_elem <- function(x) {
+  return(lapply(x, function(x){ return(x[1]) }))
+}
+
+extract_non_first_elem <- function(x) {
+  return(lapply(x, function(x){ return(x[-1]) }))
 }
