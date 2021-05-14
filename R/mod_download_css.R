@@ -21,7 +21,7 @@ mod_download_css_ui <- function(id){
     HTML("</div>"),
     helpText(code('ui <- fluidPage(
   tags$head(
-    tags$link(rel = "stylesheet", type = "text/css", href = "dark_mode.css")
+    tags$link(rel = "stylesheet", type = "text/css", href = "style.css")
   )
   ...
 )')),

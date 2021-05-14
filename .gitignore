@@ -3,3 +3,6 @@
 .Rdata
 .httr-oauth
 .DS_Store
+shinycsshelper.Rcheck/
+shinycsshelper*.tar.gz
+shinycsshelper*.tgz

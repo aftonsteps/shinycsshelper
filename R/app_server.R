@@ -118,13 +118,6 @@ app_server <- function( input, output, session ) {
                           "font_size",
                           "text_decoration"),
                elem = "a.action-button:hover")
-
-  checkbox_group_input <- callModule(module = mod_att_picker_server,
-                                     id = "checkbox_group",
-                                     att = list("color",
-                                                "font_family",
-                                                "font_size"),
-                                     elem = ".shiny-input-checkboxgroup")
   
   radio_buttons <- callModule(module = mod_att_picker_server,
                               id = "radio_buttons",
@@ -295,7 +288,6 @@ app_server <- function( input, output, session ) {
                         action_button_text,
                         action_button_text_size,
                         action_button_hover,
-                        checkbox_group_input,
                         radio_buttons,
                         checkbox_input,
                         select_input,

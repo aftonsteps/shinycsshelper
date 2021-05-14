@@ -87,17 +87,6 @@ app_ui <- function(request) {
                                                              "font_size",
                                                              "text_decoration"))),
                               shinyWidgets::switchInput(
-                                inputId = "show_checkbox_group",
-                                label = "Checkbox Group",
-                                onLabel = "Show",
-                                offLabel = "Hide"),
-                              conditionalPanel(
-                                condition = "input.show_checkbox_group",
-                                mod_att_picker_ui(id = "checkbox_group",
-                                                  att = list("color",
-                                                             "font_family",
-                                                             "font_size"))),
-                              shinyWidgets::switchInput(
                                 inputId = "show_radio_buttons",
                                 label = "Radio Buttons",
                                 onLabel = "Show",
@@ -110,7 +99,7 @@ app_ui <- function(request) {
                                                              "font_size"))),
                               shinyWidgets::switchInput(
                                 inputId = "show_checkbox",
-                                label = "Checkbox",
+                                label = "Checkbox/Checkbox Group",
                                 onLabel = "Show",
                                 offLabel = "Hide"),
                               conditionalPanel(
@@ -419,7 +408,13 @@ app_ui <- function(request) {
                             ),
                             HTML("<hr/>"),
                             fluidRow(
+                              HTML("<p>p:</p>"),
                               HTML(paste0("<p>", LOREM_TEXT, "</p>"))
+                            ),
+                            HTML("<hr/>"),
+                            fluidRow(
+                              HTML("body (text in the body of your app not included in another style tag, such as p):"),
+                              HTML(LOREM_TEXT)
                             )
                           )
                         )
