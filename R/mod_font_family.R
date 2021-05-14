@@ -13,7 +13,7 @@ mod_font_family_ui <- function(id){
     selectInput(inputId = ns("font"),
                 label = "Font Family",
                 choices = FONTS,
-                selected = FONTS[1])
+                selected = "Open Sans")
   )
 }
     

@@ -1,7 +1,7 @@
 set.seed(42)
 
-lorem_text <- 
+LOREM_TEXT <- 
   lorem::ipsum(paragraphs = 1,
                sentences = 20)
 
-usethis::use_data(lorem_text, overwrite = TRUE)
+usethis::use_data(LOREM_TEXT, overwrite = TRUE)

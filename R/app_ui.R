@@ -8,8 +8,7 @@ app_ui <- function(request) {
   tagList(
     # Leave this function for adding external resources
     golem_add_external_resources(),
-    shinyjs::inlineCSS(FONT_IMPORT),
-    shinyjs::inlineCSS(list("body" = "font-family: 'Cookie', cursive;")),
+    shinyjs::inlineCSS(FONT_IMPORT_ALL),
     mod_css_injector_ui("css_injector"),
     navbarPage("CSS Helper",
                tabPanel("Style Shiny Inputs",
@@ -17,19 +16,133 @@ app_ui <- function(request) {
                           sidebarPanel = 
                             sidebarPanel(
                               shinyWidgets::switchInput(
-                                inputId = "show_date",
-                                label = "Date Picker",
+                                inputId = "show_navbar",
+                                label = "Navbar",
                                 onLabel = "Show",
                                 offLabel = "Hide"
                               ),
                               conditionalPanel(
+                                condition = "input.show_navbar",
+                                h4("Navbar"),
+                                mod_att_picker_ui(id = "navbar",
+                                                  att = list(c("background_color", "#000000"),
+                                                             c("border_color", "#000000"),
+                                                             c("border_width"),
+                                                             "font_family",
+                                                             "font_style")),
+                                mod_att_picker_ui(id = "navbar_font_size",
+                                                  att = list("font_size")),
+                                h4("Navbar Hover-Over"),
+                                mod_att_picker_ui(id = "navbar_hover",
+                                                  att = list(c("color", "#000"),
+                                                             c("background_color", "#00D5FFDD"),
+                                                             c("border_color", "#CCC"))),
+                                h4("Navbar Selected"),
+                                mod_att_picker_ui(id = "navbar_selected",
+                                                  att = list(c("color", "#00D5FFDD"),
+                                                             c("background_color", "#FFF"),
+                                                             c("border_color", "#00D5FFDD")))),
+                              shinyWidgets::switchInput(
+                                inputId = "show_action_button",
+                                label = "Action Button",
+                                onLabel = "Show",
+                                offLabel = "Hide"
+                              ),
+                              conditionalPanel(
+                                condition = "input.show_action_button",
+                                HTML("Action Button"),
+                                mod_att_picker_ui(id = "action_button",
+                                                  att = list("color",
+                                                             "background_color",
+                                                             "border_color")),
+                                HTML("Action Button Text"),
+                                mod_att_picker_ui(id = "action_button_text",
+                                                  att = list("font_family",
+                                                             "font_style")),
+                                mod_att_picker_ui(id = "action_button_text_size",
+                                                  att = list("padding",
+                                                             "font_size")),
+                                HTML("Action Button Hover"),
+                                mod_att_picker_ui(id = "action_button_hover",
+                                                  att = list("color",
+                                                             c("background_color", "#808080"),
+                                                             "border_color"))),
+                              shinyWidgets::switchInput(
+                                inputId = "show_action_link",
+                                label = "Action Link",
+                                onLabel = "Show",
+                                offLabel = "Hide"
+                              ),
+                              conditionalPanel(
+                                h4("Action Link"),
+                                condition = "input.show_action_link",
+                                mod_att_picker_ui(id = "action_link",
+                                                  att = list("color",
+                                                             "font_family",
+                                                             "font_size",
+                                                             "text_decoration")),
+                                h4("Action Link Hover-Over"),
+                                mod_att_picker_ui(id = "action_link_hover",
+                                                  att = list(c("color", "#00D5FF80"),
+                                                             "font_size",
+                                                             "text_decoration"))),
+                              shinyWidgets::switchInput(
+                                inputId = "show_checkbox_group",
+                                label = "Checkbox Group",
+                                onLabel = "Show",
+                                offLabel = "Hide"),
+                              conditionalPanel(
+                                condition = "input.show_checkbox_group",
+                                mod_att_picker_ui(id = "checkbox_group",
+                                                  att = list("color",
+                                                             "font_family",
+                                                             "font_size"))),
+                              shinyWidgets::switchInput(
+                                inputId = "show_radio_buttons",
+                                label = "Radio Buttons",
+                                onLabel = "Show",
+                                offLabel = "Hide"),
+                              conditionalPanel(
+                                condition = "input.show_radio_buttons",
+                                mod_att_picker_ui(id = "radio_buttons",
+                                                  att = list("color",
+                                                             "font_family",
+                                                             "font_size"))),
+                              shinyWidgets::switchInput(
+                                inputId = "show_checkbox",
+                                label = "Checkbox",
+                                onLabel = "Show",
+                                offLabel = "Hide"),
+                              conditionalPanel(
+                                condition = "input.show_checkbox",
+                                mod_att_picker_ui(id = "checkbox",
+                                                  att = list("color",
+                                                             "font_family",
+                                                             "font_size"))),
+                              shinyWidgets::switchInput(
+                                inputId = "show_select_input",
+                                label = "Select/Selectize",
+                                onLabel = "Show",
+                                offLabel = "Hide"),
+                              conditionalPanel(
+                                condition = "input.show_select_input",
+                                mod_att_picker_ui(id = "select_input",
+                                                  att = list("color",
+                                                             "font_family",
+                                                             "font_size"))),
+                              shinyWidgets::switchInput(
+                                inputId = "show_date",
+                                label = "Date Input",
+                                onLabel = "Show",
+                                offLabel = "Hide"),
+                              conditionalPanel(
                                 condition = "input.show_date",
-                                h3("Date Picker Input Box"),
+                                h4("Date Picker Input Box"),
                                 mod_att_picker_ui(id = "date",
                                                   att = list("color",
                                                              "font_family",
                                                              "font_size")),
-                                h3("Date Picker Calendar"),
+                                h4("Date Picker Calendar"),
                                 mod_att_picker_ui(id = "date_calendar",
                                                   att = list("color",
                                                              "font_family",
@@ -69,110 +182,10 @@ app_ui <- function(request) {
                                                              "font_style")),
                               ),
                               shinyWidgets::switchInput(
-                                inputId = "show_checkbox",
-                                label = "Checkbox",
-                                onLabel = "Show",
-                                offLabel = "Hide"
-                              ),
-                              conditionalPanel(
-                                condition = "input.show_checkbox",
-                                mod_att_picker_ui(id = "checkbox",
-                                                  att = list("color",
-                                                             "font_family",
-                                                             "font_size"))
-                              ),
-                              shinyWidgets::switchInput(
-                                inputId = "show_checkbox_group",
-                                label = "Checkbox Group",
-                                onLabel = "Show",
-                                offLabel = "Hide"
-                              ),
-                              conditionalPanel(
-                                condition = "input.show_checkbox_group",
-                                mod_att_picker_ui(id = "checkbox_group",
-                                                  att = list("color",
-                                                             "font_family",
-                                                             "font_size"))
-                                ),
-                              shinyWidgets::switchInput(
-                                inputId = "show_action_link",
-                                label = "Action Link",
-                                onLabel = "Show",
-                                offLabel = "Hide"
-                              ),
-                              conditionalPanel(
-                                h3("Action Link"),
-                                condition = "input.show_action_link",
-                                mod_att_picker_ui(id = "action_link",
-                                                  att = list("color",
-                                                             "font_family",
-                                                             "font_size",
-                                                             "text_decoration")),
-                                h3("Action Link Hover-Over"),
-                                mod_att_picker_ui(id = "action_link_hover",
-                                                  att = list("color",
-                                                             "font_size",
-                                                             "text_decoration"))
-                              ),
-                              shinyWidgets::switchInput(
-                                inputId = "show_action_button",
-                                label = "Action Button",
-                                onLabel = "Show",
-                                offLabel = "Hide"
-                              ),
-                              conditionalPanel(
-                                condition = "input.show_action_button",
-                                HTML("Action Button"),
-                                mod_att_picker_ui(id = "action_button",
-                                                  att = list("color",
-                                                             "background_color",
-                                                             "border_color")),
-                                HTML("Action Button Text"),
-                                mod_att_picker_ui(id = "action_button_text",
-                                                  att = list("font_family",
-                                                             "font_style")),
-                                mod_att_picker_ui(id = "action_button_text_size",
-                                                  att = list("padding",
-                                                             "font_size")),
-                                HTML("Action Button Hover"),
-                                mod_att_picker_ui(id = "action_button_hover",
-                                                  att = list("color",
-                                                             "background_color",
-                                                             "border_color"))
-                              ),
-                              shinyWidgets::switchInput(
-                                inputId = "show_navbar",
-                                label = "Navbar",
-                                onLabel = "Show",
-                                offLabel = "Hide"
-                              ),
-                              conditionalPanel(
-                                condition = "input.show_navbar",
-                                h3("Navbar"),
-                                mod_att_picker_ui(id = "navbar",
-                                                  att = list(c("background_color", "#000000"),
-                                                            c("border_color", "#000000"),
-                                                            c("border_width"),
-                                                            "font_family",
-                                                            "font_style")),
-                                mod_att_picker_ui(id = "navbar_font_size",
-                                                  att = list("font_size")),
-                                h3("Navbar Hover-Over"),
-                                mod_att_picker_ui(id = "navbar_hover",
-                                                  att = list(c("color", "#000"),
-                                                             c("background_color", "#00D5FFDD"),
-                                                             c("border_color", "#CCC"))),
-                                h3("Navbar Selected"),
-                                mod_att_picker_ui(id = "navbar_selected",
-                                                  att = list(c("color", "#00D5FFDD"),
-                                                             c("background_color", "#FFF"),
-                                                             c("border_color", "#00D5FFDD")))),
-                              shinyWidgets::switchInput(
                                 inputId = "show_slider_input",
                                 label = "Slider Input",
                                 onLabel = "Show",
-                                offLabel = "Hide"
-                              ),
+                                offLabel = "Hide"),
                               conditionalPanel(
                                 condition = "input.show_slider_input",
                                 h4("Slider Tick Text"),
@@ -205,8 +218,17 @@ app_ui <- function(request) {
                                                   att = list("color",
                                                              "font_family",
                                                              "font_size",
-                                                             "background_color"))
-                              )
+                                                             "background_color"))),
+                              shinyWidgets::switchInput(
+                                inputId = "show_file_upload",
+                                label = "File Upload",
+                                onLabel = "Show",
+                                offLabel = "Hide"),
+                              conditionalPanel(
+                                condition = "input.show_file_upload",
+                                mod_att_picker_ui(id = "file_upload",
+                                                  att = list("font_family",
+                                                             "font_size"))),
                             ),
                           mainPanel = 
                             mainPanel(
@@ -309,8 +331,7 @@ app_ui <- function(request) {
                                                            c("background_color", "#FFFFFF"),
                                                            "font_family",
                                                            "font_style",
-                                                           c("font_size", 36)))
-                            ),
+                                                           c("font_size", 36)))),
                             shinyWidgets::switchInput(
                               inputId = "show_h2",
                               label = "H2",
@@ -323,8 +344,7 @@ app_ui <- function(request) {
                                                            c("background_color", "#FFFFFF"),
                                                            "font_family",
                                                            "font_style",
-                                                           c("font_size", 28)))
-                            ),
+                                                           c("font_size", 28)))),
                             shinyWidgets::switchInput(
                               inputId = "show_h3",
                               label = "H3",
@@ -337,8 +357,7 @@ app_ui <- function(request) {
                                                            c("background_color", "#FFFFFF"),
                                                            "font_family",
                                                            "font_style",
-                                                           c("font_size", 20)))
-                            ),
+                                                           c("font_size", 20)))),
                             shinyWidgets::switchInput(
                               inputId = "show_h4",
                               label = "H4",
@@ -351,8 +370,7 @@ app_ui <- function(request) {
                                                            c("background_color", "#FFFFFF"),
                                                            "font_family",
                                                            "font_style",
-                                                           c("font_size", 12)))
-                            ),
+                                                           c("font_size", 12)))),
                             shinyWidgets::switchInput(
                               inputId = "show_p",
                               label = "paragraph",
@@ -365,8 +383,20 @@ app_ui <- function(request) {
                                                            c("background_color", "#FFFFFF"),
                                                            "font_family",
                                                            "font_style",
-                                                           "font_size"))
-                            )
+                                                           "font_size"))),
+                            shinyWidgets::switchInput(
+                              inputId = "show_body",
+                              label = "body",
+                              onLabel = "Show",
+                              offLabel = "Hide"),
+                            conditionalPanel(
+                              condition = "input.show_body",
+                              mod_att_picker_ui(id = "body",
+                                                att = list("color",
+                                                           c("background_color", "#FFFFFF"),
+                                                           "font_family",
+                                                           "font_style",
+                                                           "font_size")))
                           ),
                           mainPanel(
                             fluidRow(
@@ -389,7 +419,7 @@ app_ui <- function(request) {
                             ),
                             HTML("<hr/>"),
                             fluidRow(
-                              HTML(paste0("<p>", lorem_text, "</p>"))
+                              HTML(paste0("<p>", LOREM_TEXT, "</p>"))
                             )
                           )
                         )

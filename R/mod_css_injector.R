@@ -22,8 +22,9 @@ mod_css_injector_server <- function(input, output, session, css){
   
    css_agg <- reactive({
      css_list <- nested_unreactify(css)
-     
-     write(x = FONT_IMPORT, file = CSS_FILE)
+     font_import <- make_font_import(fonts = get_fonts(css_list = css_list))
+
+     write(x = font_import, file = CSS_FILE)
      
      css_to_render <- do.call(what = tableHTML::make_css, args = css_list)
      

@@ -120,20 +120,33 @@ app_server <- function( input, output, session ) {
                elem = "a.action-button:hover")
 
   checkbox_group_input <- callModule(module = mod_att_picker_server,
-
                                      id = "checkbox_group",
                                      att = list("color",
                                                 "font_family",
                                                 "font_size"),
                                      elem = ".shiny-input-checkboxgroup")
-
+  
+  radio_buttons <- callModule(module = mod_att_picker_server,
+                              id = "radio_buttons",
+                              att = list("color",
+                                         "font_family",
+                                         "font_size"),
+                              elem = ".shiny-input-radiogroup")
+  
   checkbox_input <- callModule(module = mod_att_picker_server,
                                id = "checkbox",
                                att = list("color",
                                           "font_family",
                                           "font_size"),
                                elem = ".checkbox")
-
+  
+  select_input <- callModule(module = mod_att_picker_server,
+                               id = "select_input",
+                               att = list("color",
+                                          "font_family",
+                                          "font_size"),
+                               elem = ".control-label, .selectize-input, .selectize-control, selectized shiny-bound-input")
+  
   date_input <- callModule(module = mod_att_picker_server,
                            id = "date",
                            att = list("color",
@@ -195,11 +208,18 @@ app_server <- function( input, output, session ) {
                                                           "font_style"),
                                                elem = ".datepicker table tr td.new:hover")
 
+  file_upload <- callModule(module = mod_att_picker_server,
+                            id = "file_upload",
+                            att = list("font_family",
+                                       "font_size"),
+                            elem = ".input-group-prepend, .form-control")
+  
   h1 <-
     callModule(module = mod_att_picker_server,
                id = "h1",
                att = list("color",
                           "background_color",
+                          "font_family",
                           "font_style",
                           "font_size"),
                elem = "h1")
@@ -209,6 +229,7 @@ app_server <- function( input, output, session ) {
                id = "h2",
                att = list("color",
                           "background_color",
+                          "font_family",
                           "font_style",
                           "font_size"),
                elem = "h2")
@@ -218,6 +239,7 @@ app_server <- function( input, output, session ) {
                id = "h3",
                att = list("color",
                           "background_color",
+                          "font_family",
                           "font_style",
                           "font_size"),
                elem = "h3")
@@ -227,19 +249,28 @@ app_server <- function( input, output, session ) {
                id = "h4",
                att = list("color",
                           "background_color",
+                          "font_family",
                           "font_style",
                           "font_size"),
                elem = "h4")
 
-  p <-
-    callModule(module = mod_att_picker_server,
-               id = "p",
-               att = list("color",
-                          "background_color",
-                          "font_family",
-                          "font_style",
-                          "font_size"),
-               elem = "p")
+  p <- callModule(module = mod_att_picker_server,
+                  id = "p",
+                  att = list("color",
+                             "background_color",
+                             "font_family",
+                             "font_style",
+                             "font_size"),
+                  elem = "p")
+  
+  body <- callModule(module = mod_att_picker_server,
+                     id = "body",
+                     att = list("color",
+                                "background_color",
+                                "font_family",
+                                "font_style",
+                                "font_size"),
+                     elem = "body")
   
   callModule(mod_css_injector_server,
              "css_injector",
@@ -265,7 +296,9 @@ app_server <- function( input, output, session ) {
                         action_button_text_size,
                         action_button_hover,
                         checkbox_group_input,
+                        radio_buttons,
                         checkbox_input,
+                        select_input,
                         date_input,
                         date_calendar,
                         date_calendar_current_days,
@@ -274,13 +307,8 @@ app_server <- function( input, output, session ) {
                         date_calendar_active_day,
                         date_calendar_active_day_hover,
                         date_calendar_old_day_hover,
-                        date_calendar_future_day_hover
-             ))
+                        date_calendar_future_day_hover,
+                        file_upload,
+                        body))
   
 }
-
-## TODO
-# - change default hover for action button, action link
-# - generally pick good default values for things
-# - add a lot more fonts
-# - style the download page
